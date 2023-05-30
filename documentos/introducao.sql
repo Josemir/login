@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Maio-2023 às 05:12
+-- Tempo de geração: 30-Maio-2023 às 10:10
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.0.28
 
@@ -87,9 +87,16 @@ CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `descricao` text DEFAULT NULL,
-  `preco` decimal(10,2) NOT NULL,
+  `preco` float(10,2) NOT NULL,
   `data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id`, `nome`, `descricao`, `preco`, `data`) VALUES
+(1, 'leite condensado ', 'semidesnatado', 6.99, '2023-05-31');
 
 -- --------------------------------------------------------
 
@@ -109,7 +116,11 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `username`, `password`) VALUES
 (1, 'eduardo', '123456'),
-(2, 'saatkamp', '654321');
+(2, 'saatkamp', '654321'),
+(3, 'mistersaat', '123456'),
+(4, 'guaracamp', '123456'),
+(5, 'guaracamp', '123456'),
+(6, 'saidecampo', '123456');
 
 --
 -- Índices para tabelas despejadas
@@ -171,13 +182,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
