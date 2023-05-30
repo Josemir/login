@@ -3,6 +3,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class loginController extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('ProdutosModel');
+        // duvida aqui
+        $this->load->library('session');
+        $this->load->helper('url'); 
+    }
+
+    
+    // função para logar
+    public function autenticar() {
+
+        $this->load->helper('form');
+        
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        
+        
+        $this->load->model('Usuario_model');
+        
+        $usuario = $this->Usuario_model->autenticar($username, $password);
+        
+        if ($usuario) {
+            // adicionei aqui
+            $data['produtos'] = $this->ProdutosModel->getAllProdutos();
+            $this->load->view('listaView', $data);
+            // será adicionado depois a confirmação de login e em caso de erro 
+        
+        }  else {
+            
+            $data['error'] = 'Usuário ou senha inválidos';
+            $this->load->view('loginView', $data);
+        }
+    }
+
+   
+
     // função para cadastrar
     public function registration(){ 
         $data = $userData = array(); 
@@ -33,31 +70,6 @@ class loginController extends CI_Controller {
         $this->load->view('cadastrarView', $data); 
       
     } 
-
-    // função para logar
-    public function autenticar() {
-
-        $this->load->helper('form');
-        
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        
-        
-        $this->load->model('Usuario_model');
-        
-        $usuario = $this->Usuario_model->autenticar($username, $password);
-        
-        if ($usuario) {
-        
-            $this->load->view('listaView');
-            // será adicionado depois a confirmação de login e em caso de erro 
-        
-        }  else {
-            
-            $data['error'] = 'Usuário ou senha inválidos';
-            $this->load->view('loginView', $data);
-        }
-    }
 
             }
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Maio-2023 às 20:50
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Tempo de geração: 30-Maio-2023 às 05:12
+-- Versão do servidor: 10.4.28-MariaDB
+-- versão do PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,24 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cidades`
+-- Estrutura da tabela `cidade`
 --
 
-CREATE TABLE `cidades` (
+CREATE TABLE `cidade` (
   `codicidade` int(11) NOT NULL,
-  `Cidade` varchar(100) NOT NULL,
-  `UF` char(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `nome` varchar(100) NOT NULL,
+  `uf` char(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `cidades`
+-- Extraindo dados da tabela `cidade`
 --
 
-INSERT INTO `cidades` (`codicidade`, `Cidade`, `UF`) VALUES
-(1, 'Rio de Janeiro', 'RJ'),
-(2, 'Porto Alegre', 'RS'),
-(3, 'Paraná', 'PR'),
-(4, 'São Paulo', 'SP');
+INSERT INTO `cidade` (`codicidade`, `nome`, `uf`) VALUES
+(1, 'Porto Alegre', 'RS'),
+(2, 'São Paulo', 'SP'),
+(3, 'Rio de Janeiro', 'RJ'),
+(4, 'Paraná', 'PR');
 
 -- --------------------------------------------------------
 
@@ -51,7 +51,7 @@ INSERT INTO `cidades` (`codicidade`, `Cidade`, `UF`) VALUES
 
 CREATE TABLE `mangas` (
   `id` int(11) NOT NULL,
-  `titulo` varchar(255) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
   `estoque` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -60,10 +60,10 @@ CREATE TABLE `mangas` (
 --
 
 INSERT INTO `mangas` (`id`, `titulo`, `estoque`) VALUES
-(1, 'Naruto', 1),
-(2, 'One Piece', 0),
-(3, 'Pokemon', 0),
-(4, 'Digimon', 1);
+(1, 'Naruto     ', 1),
+(2, 'One Piece ', 0),
+(3, 'Nisekoi   ', 0),
+(4, 'Kis x Sis', 1);
 
 -- --------------------------------------------------------
 
@@ -77,40 +77,19 @@ CREATE TABLE `posts` (
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Extraindo dados da tabela `posts`
---
-
-INSERT INTO `posts` (`id`, `title`, `description`) VALUES
-(1, 'Teste', 'Teste');
-
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Estrutura da tabela `produtos`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,
-  `first_name` varchar(25) NOT NULL,
-  `last_name` varchar(25) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(200) NOT NULL,
-  `gender` enum('Male','Female') NOT NULL,
-  `phone` varchar(15) NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=Active | 0=Inactive'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `users`
---
-
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `gender`, `phone`, `created`, `modified`, `status`) VALUES
-(1, 'Eduardo', 'Saatkamp', 'eduardosaatkamp@gmail.com', '123456', 'Male', '21997941110', '2023-05-25 16:56:26', '2023-05-25 16:56:26', 1),
-(2, 'Eduardo', 'Saatkamp', 'eduardo.saatkamp.rioprevidencia@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Male', '21997941110', '2023-05-25 19:22:00', '2023-05-25 19:22:00', 1),
-(3, 'Eduardo', 'Saatkamp', 'eduardosaatkamp@outlook.com.br', 'e10adc3949ba59abbe56e057f20f883e', 'Male', '21997941110', '2023-05-25 19:24:12', '2023-05-25 19:24:12', 1);
+  `nome` varchar(255) NOT NULL,
+  `descricao` text DEFAULT NULL,
+  `preco` decimal(10,2) NOT NULL,
+  `data` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -120,9 +99,9 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `gend
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `usuarios`
@@ -137,9 +116,9 @@ INSERT INTO `usuarios` (`id`, `username`, `password`) VALUES
 --
 
 --
--- Índices para tabela `cidades`
+-- Índices para tabela `cidade`
 --
-ALTER TABLE `cidades`
+ALTER TABLE `cidade`
   ADD PRIMARY KEY (`codicidade`);
 
 --
@@ -155,9 +134,9 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `users`
+-- Índices para tabela `produtos`
 --
-ALTER TABLE `users`
+ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -171,9 +150,9 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de tabela `cidades`
+-- AUTO_INCREMENT de tabela `cidade`
 --
-ALTER TABLE `cidades`
+ALTER TABLE `cidade`
   MODIFY `codicidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
@@ -186,13 +165,13 @@ ALTER TABLE `mangas`
 -- AUTO_INCREMENT de tabela `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de tabela `users`
+-- AUTO_INCREMENT de tabela `produtos`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `produtos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
