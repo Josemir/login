@@ -1,4 +1,4 @@
-<!-- http://[::1]/login/index.php/loginController/registration/ -->
+<!-- /http://localhost/codeigniter_login_system/index.php/Users/registration/-->
 
 <div>
     <h2>Criar uma nova conta</h2>
