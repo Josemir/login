@@ -60,15 +60,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		padding:0;
 	}
 
-	p.footer {
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-
 	#container {
 		margin: 10px;
 		border: 1px solid #D0D0D0;
@@ -77,13 +68,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body>
-<!-- http://localhost/domingo/index.php-->
+<!-- http://localhost/login/index.php-->
 
 <div id="container">
 	<h1 style="display: flex; justify-content: center;">PORTAL DO USUÁRIO</h1>
 	<p style="display: flex; justify-content: center;">Para acessar ao sistema, clique no botão abaixo.</p>
 	<div style="display: flex; justify-content: center;">
-	<button><a href="index.php/loginController/autenticar">Acessar</a></button> </div>
+	<button><a href="loginController/autenticar">Acessar</a></button> </div>
 </div>
 
 </body>

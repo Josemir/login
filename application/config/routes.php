@@ -53,5 +53,8 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['dashboard'] = 'welcome';
+$route['cadastro'] = 'cadastroController/cadastrar'; // modificação realizada pra teste
+$route['cadastroController/sucesso/(:num)'] = 'cadastroController/sucesso/$1';
+ // modificação realizada pra teste
 
 
