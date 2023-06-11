@@ -69,10 +69,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <!-- http://localhost/login/index.php-->
-
+ <!-- atualizei aqui, link tava quebrado -->
 <div id="container">
 	<h1 style="display: flex; justify-content: center;">PORTAL DO USUÁRIO</h1>
-	<p style="display: flex; justify-content: center;">Para acessar ao sistema, clique no botão abaixo.</p>
+	<p style="display: flex; justify-content: center;">Para acessar ao sistema, 
+	<br>
+	clique no botão abaixo.</p>
 	<div style="display: flex; justify-content: center;">
 	<button><a href="loginController/autenticar">Acessar</a></button> </div>
 </div>
