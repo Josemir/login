@@ -25,7 +25,21 @@
                 <td><?php echo $produto->descricao; ?></td>
                 <td><?php echo $produto->preco; ?></td>
                 <td><?php echo $produto->data; ?></td>
+            <td>
+        <a href="">
+            Edit
+        </a>
+                </td>
+                <td>
+            <a href="">
+            Delete    
+            </a> 
+                </td>
+                
             </tr>
+    <!-- <tr> Representa uma linha na tabela. -->
+    <!-- <th> define cabeçalho. -->
+    <!-- <td> representa uma celula. -->
         <?php endforeach; ?>
     </table>
     <a href="<?php echo ('autenticar'); ?>">Logout</a>
