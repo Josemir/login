@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body>
-<!-- http://localhost/login/index.php-->
+
  <!-- atualizei aqui, link tava quebrado -->
 <div id="container">
 	<h1 style="display: flex; justify-content: center;">PORTAL DO USUÁRIO</h1>

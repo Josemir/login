@@ -33,8 +33,7 @@ class cadastroController extends CI_Controller {
     
             if ($usuario_id) {
                 // Redirecionar para a página de sucesso com o id do usuário
-                $this->load->view('sucessoView' . $usuario_id);
-                
+                redirect('cadastroController/sucesso/' . $usuario_id);
             } else {
                 // Tratar o erro de inserção
                 $data['error'] = 'Erro ao cadastrar usuário';

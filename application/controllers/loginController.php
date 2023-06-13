@@ -6,14 +6,10 @@ class loginController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('ProdutosModel');
-        // duvida aqui
         $this->load->library('session');
-        $this->load->helper('url'); 
+        $this->load->helper(array('url', 'form')); // Carrega as bibliotecas URL e Form
     }
 
-    
-    
-    // função para logar
     public function autenticar() {
         $this->load->helper('form');
         
@@ -23,46 +19,66 @@ class loginController extends CI_Controller {
         $this->load->model('Usuario_model');
         
         $usuario = $this->Usuario_model->autenticar($username, $password);
-    
-        var_dump($usuario); // Exibir informações do usuário
         
         if ($usuario) {
-            // adicionei aqui
             $data['produtos'] = $this->ProdutosModel->getAllProdutos();
             $this->load->view('listaView', $data);
-            // será adicionado depois a confirmação de login e em caso de erro 
-            var_dump($data['produtos']); // Exibir informações do usuário
         } else {
             $data['error'] = 'Usuário ou senha inválidos';
             $this->load->view('loginView', $data);
         }
     }
     
+    public function create() {
+        // Exibe o formulário de criação de produto
+        $this->load->view('createView');
+    }
     
-
-    // irá adicionar as funções de crud
-    public function create()
-	{
-		
-	}
+    // http://[::1]/login/index.php/loginController/create
+    public function store() {
+        $data = array(
+            'nome' => $this->input->post('nome'),
+            'descricao' => $this->input->post('descricao'),
+            'preco' => $this->input->post('preco'),
+            'data' => $this->input->post('data')
+        );
+        
+        $this->ProdutosModel->insertProduto($data);
+        
+        redirect('loginController/lista'); // Redireciona após a inserção
+    }
     
-    public function edit()
-	{
-		
-	}
+    public function edit($id) {
+        $data['produto'] = $this->ProdutosModel->getProduto($id);
+        $this->load->view('editView', $data);
+    }
+    
+    public function update($id) {
+        $data = array(
+            'nome' => $this->input->post('nome'),
+            'descricao' => $this->input->post('descricao'),
+            'preco' => $this->input->post('preco'),
+            'data' => $this->input->post('data')
+        );
+        
+        $this->ProdutosModel->updateProduto($id, $data);
+        
+        
+        redirect('loginController/lista'); // Redireciona para a página de autenticação após a atualização
+    }
+    
+    public function delete($id) {
+        $this->ProdutosModel->deleteProduto($id);
+        
+        redirect('loginController/lista'); // Redireciona para a página de autenticação após a exclusão
+    }
 
-    public function update()
-	{
-		
-	}
-
-    public function delete()
-	{
-		
-	}
-
-
-            }
-
+    // função temporária
+    // problema antes da função: repete autenticar;
+    public function lista (){
+     
+    $data['produtos'] = $this->ProdutosModel->getAllProdutos();
+            $this->load->view('listaView', $data);
+    }
+}
 ?>
-

@@ -1,4 +1,3 @@
-<!-- cadastroView.php -->
 <!DOCTYPE html>
 <html>
 <head>

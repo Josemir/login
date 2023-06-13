@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Usuario conectado</title>
 </head>
-<!-- http://[::1]/login/index.php/loginController/autenticar-->
 <body>
     <h1>Lista de Produtos</h1>
     <h2>Produtos cadastrados no sistema</h2>
@@ -17,7 +16,10 @@
             <th>Descrição</th>
             <th>Preço</th>
             <th>Data</th>
+            <!-- apresentada em inglês-->
+            <th>Ações</th>
         </tr>
+        
         <?php foreach ($produtos as $produto): ?>
             <tr>
                 <td><?php echo $produto->id; ?></td>
@@ -25,24 +27,30 @@
                 <td><?php echo $produto->descricao; ?></td>
                 <td><?php echo $produto->preco; ?></td>
                 <td><?php echo $produto->data; ?></td>
-            <td>
-        <a href="">
-            Edit
-        </a>
-                </td>
+                <!-- edit funcionando-->
                 <td>
-            <a href="">
-            Delete    
-            </a> 
+                    <a href="<?php echo base_url('index.php/loginController/edit/'.$produto->id); ?>">Edit</a>
+            
+            
+                    <a href="<?php echo base_url('index.php/loginController/delete/'.$produto->id); ?>">Delete</a>
                 </td>
-                
             </tr>
-    <!-- <tr> Representa uma linha na tabela. -->
-    <!-- <th> define cabeçalho. -->
-    <!-- <td> representa uma celula. -->
         <?php endforeach; ?>
     </table>
-    <a href="<?php echo ('autenticar'); ?>">Logout</a>
+    <!-- outra alternativa-->
+    <table>
+        <th>
+    <a href="<?php echo base_url('index.php/loginController/autenticar'); ?>">Sair</a>
+    </th>
+    <th></th>
+
+    <a href="<?php echo base_url('index.php/loginController/create'); ?>">Criar item</a>
+
+    <th></th>
+    <th>
+        <?php echo anchor('/', 'Página inicial'); ?>
     
+    </th>
+    </table>
 </body>
 </html>

@@ -1,9 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-// Função ativa já, sendo utilizar para autenticar usuário
+// Função ativa já, sendo utilizada para autenticar usuário
 class Usuario_model extends CI_Model {
-    
     public function autenticar($username, $password) {
 
         $this->db->where('username', $username);
