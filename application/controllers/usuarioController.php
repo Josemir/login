@@ -12,7 +12,7 @@ class usuarioController extends CI_Controller {
     }
 
     
-    // função para logar
+   // Função para autenticar o usuário
     public function autenticar() {
 
         $this->load->helper('form');
@@ -26,7 +26,7 @@ class usuarioController extends CI_Controller {
         $usuario = $this->Usuario_model->autenticar($username, $password);
         
         if ($usuario) {
-            // adicionei aqui
+                  // Carrega a lista de produtos após o login bem-sucedido
             $data['produtos'] = $this->ProdutosModel->getAllProdutos();
             $this->load->view('listaView', $data);
             // será adicionado depois a confirmação de login e em caso de erro 
@@ -38,7 +38,7 @@ class usuarioController extends CI_Controller {
         }
     }
 
-    // função
+        // Função para exibir a página de cadastro de usuário
     public function index() {
         $this->load->view('cadastroView');
     }
@@ -75,7 +75,7 @@ class usuarioController extends CI_Controller {
         }
     }
     
-    // função
+      // Função para exibir a página de sucesso
     public function sucesso() {
         $this->load->view('sucessoView');
     }
@@ -84,17 +84,17 @@ class usuarioController extends CI_Controller {
     
     public function edit()
 	{
-		
+		    // Função para editar um usuário - a ser implementada
 	}
 
     public function update()
 	{
-		
+		 // Função para atualizar um usuário - a ser implementada
 	}
 
     public function delete()
 	{
-		
+		  // Função para excluir um usuário - a ser implementada
 	}
 
 
