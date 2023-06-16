@@ -1,0 +1,5 @@
+Nesse diretório consta um projeto em andamento para desenvolvimento de competências em desenvolvimento web, cujo objetivo é aprender sobre arquitetura MVC e o uso de frameworks, como o CodeIgniter, integração com o banco de dados e o fluxo/tratamento dos dados. O projeto consiste em criar um sistema que permita o acesso e cadastro de usuários, assim como o gerenciamento de produtos e suas informações. O projeto utiliza de conhecimentos de HTML, CSS, PHP, CODEIGNITER e SQL. Atualmente, as funcionalidades implementadas incluem o acesso de usuários, página inicial, cadastro e apresentação dos produtos. Nas próximas etapas, serão adicionadas mais funcionalidades, estilizações e aprimoramentos dos códigos. <br>
+Prévia Edit <br>
+<img width="960" alt="principalListaDeTarefas" src="https://raw.githubusercontent.com/eduardosaatkamp/login/main/previewEdit.PNG">
+<br> Prévia Usuário <br>
+<img width="960" alt="principalListaDeTarefas" src="https://raw.githubusercontent.com/eduardosaatkamp/login/main/previewUser.PNG">
